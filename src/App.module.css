@@ -1,0 +1,29 @@
+/* Загальні стилі для всього додатку */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a.active {
+    border-bottom: 2px solid #f0c040;
+}
+
+nav {
+    margin-bottom: 20px;
+}

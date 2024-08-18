@@ -1,0 +1,25 @@
+/* Стилі для сторінки "Не знайдено" */
+.notFound {
+    text-align: center;
+    padding: 40px;
+}
+
+.notFound h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.notFound p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.notFound a {
+    font-size: 18px;
+    color: #f0c040;
+    text-decoration: none;
+}
+
+.notFound a:hover {
+    text-decoration: underline;
+}

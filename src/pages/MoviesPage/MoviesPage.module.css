@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.content {
+    flex: 1;
+    padding: 10px;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+}
+
+.search input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background-color: #0056b3;
+}

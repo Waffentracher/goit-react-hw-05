@@ -1,0 +1,38 @@
+.movieDetails {
+    padding: 20px;
+}
+
+.goBack {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.title {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.overview {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.poster {
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.additionalInfo {
+    margin-top: 20px;
+}
+
+.link {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #007bff;
+    text-decoration: none;
+}
