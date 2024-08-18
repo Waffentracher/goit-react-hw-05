@@ -1,25 +1,42 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { fetchMovieCast } from '../../services/api';
 import styles from './MovieCast.module.css';
 
-const MovieCast = () => {
-  const { movieId } = useParams();
+const MovieCast = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    fetchMovieCast(movieId).then(setCast);
+    const fetchCast = async () => {
+      try {
+        const movieCast = await fetchMovieCast(movieId);
+        setCast(movieCast);
+      } catch (error) {
+        console.error('Error fetching movie cast:', error);
+      }
+    };
+
+    fetchCast();
   }, [movieId]);
 
   return (
     <ul className={styles.castList}>
       {cast.map((actor) => (
         <li key={actor.id} className={styles.castItem}>
-          {actor.name}
+          <img
+            src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+            alt={actor.name}
+            className={styles.actorPhoto}
+          />
+          <p>{actor.name}</p>
         </li>
       ))}
     </ul>
   );
+};
+
+MovieCast.propTypes = {
+  movieId: PropTypes.string.isRequired, // чи number в залежності від вашого типу
 };
 
 export default MovieCast;

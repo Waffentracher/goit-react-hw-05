@@ -1,38 +1,57 @@
-.movieDetails {
+.container {
     padding: 20px;
 }
 
-.goBack {
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.title {
-    font-size: 24px;
-    margin: 10px 0;
-}
-
-.overview {
-    font-size: 18px;
-    margin: 10px 0;
+.movieDetails {
+    display: flex;
+    align-items: center;
 }
 
 .poster {
-    max-width: 300px;
-    border-radius: 8px;
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
 }
 
-.additionalInfo {
+.details {
+    max-width: 600px;
+}
+
+.buttons {
     margin-top: 20px;
 }
 
-.link {
-    display: inline-block;
+.button {
     margin-right: 10px;
-    font-size: 18px;
-    color: #007bff;
-    text-decoration: none;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.button.active {
+    background-color: #0056b3;
+}
+
+.castSection,
+.reviewsSection {
+    margin-top: 20px;
+}
+
+.castList,
+.reviewsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.castItem,
+.reviewItem {
+    margin-bottom: 10px;
+}
+
+.actorPhoto {
+    width: 50px;
+    height: 75px;
+    border-radius: 5px;
 }

@@ -1,7 +1,6 @@
 .list {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin: 0;
 }
 
 .list li {
@@ -11,7 +10,7 @@
 .list a {
     text-decoration: none;
     color: #007bff;
-    font-size: 18px;
+    font-size: 1.1em;
 }
 
 .list a:hover {
