@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import { fetchMovieReviews } from '../../services/api';
 import styles from './MovieReviews.module.css';
 
-const MovieReviews = ({ movieId }) => {
+const MovieReviews = () => {
+  const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -33,10 +34,6 @@ const MovieReviews = ({ movieId }) => {
       )}
     </ul>
   );
-};
-
-MovieReviews.propTypes = {
-  movieId: PropTypes.string.isRequired, 
 };
 
 export default MovieReviews;

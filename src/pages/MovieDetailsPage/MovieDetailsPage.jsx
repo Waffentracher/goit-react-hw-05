@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useParams, useNavigate, useLocation, Link, Outlet } from 'react-router-dom';
 import { fetchMovieDetails } from '../../services/api';
-import MovieCast from '../../components/MovieCast/MovieCast';
-import MovieReviews from '../../components/MovieReviews/MovieReviews';
 import styles from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [movie, setMovie] = useState(null);
-  const [showCast, setShowCast] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
+  const backLinkRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -25,23 +23,17 @@ const MovieDetailsPage = () => {
     fetchDetails();
   }, [movieId]);
 
-  const handleShowCast = () => {
-    setShowCast(true);
-    setShowReviews(false);
-    navigate(`/movies/${movieId}/cast`);
-  };
-
-  const handleShowReviews = () => {
-    setShowCast(false);
-    setShowReviews(true);
-    navigate(`/movies/${movieId}/reviews`);
+  const handleGoBack = () => {
+    navigate(backLinkRef.current);
   };
 
   if (!movie) return null;
 
   return (
     <div className={styles.container}>
-      <Link to="/">Go back</Link>
+      <button onClick={handleGoBack} className={styles.goBackButton}>
+        Go back
+      </button>
       <div className={styles.movieDetails}>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -56,20 +48,18 @@ const MovieDetailsPage = () => {
           <p><strong>Overview:</strong> {movie.overview}</p>
         </div>
       </div>
-      <div className={styles.buttons}>
-        <button 
-          onClick={handleShowCast} 
-          className={`${styles.button} ${showCast ? styles.active : ''}`}>
-          Show Cast
-        </button>
-        <button 
-          onClick={handleShowReviews} 
-          className={`${styles.button} ${showReviews ? styles.active : ''}`}>
-          Show Reviews
-        </button>
+      <div className={styles.additionalInfo}>
+        <h3>Additional information</h3>
+        <ul>
+          <li>
+            <Link to="cast" state={{ from: backLinkRef.current }}>Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews" state={{ from: backLinkRef.current }}>Reviews</Link>
+          </li>
+        </ul>
       </div>
-      {showCast && <MovieCast movieId={movieId} />}
-      {showReviews && <MovieReviews movieId={movieId} />}
+      <Outlet />
     </div>
   );
 };

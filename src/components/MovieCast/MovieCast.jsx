@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from '../../services/api';
 import styles from './MovieCast.module.css';
 
-const MovieCast = ({ movieId }) => {
+const MovieCast = () => {
+  const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
@@ -24,19 +25,16 @@ const MovieCast = ({ movieId }) => {
       {cast.map((actor) => (
         <li key={actor.id} className={styles.castItem}>
           <img
-            src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+            src={actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : 'path_to_placeholder_image'}
             alt={actor.name}
             className={styles.actorPhoto}
           />
           <p>{actor.name}</p>
+          <p><strong>Character:</strong> {actor.character}</p>
         </li>
       ))}
     </ul>
   );
-};
-
-MovieCast.propTypes = {
-  movieId: PropTypes.string.isRequired, 
 };
 
 export default MovieCast;
