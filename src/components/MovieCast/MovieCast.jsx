@@ -36,7 +36,7 @@ const MovieCast = ({ movieId }) => {
 };
 
 MovieCast.propTypes = {
-  movieId: PropTypes.string.isRequired, // чи number в залежності від вашого типу
+  movieId: PropTypes.string.isRequired, 
 };
 
 export default MovieCast;
